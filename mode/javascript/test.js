@@ -5,6 +5,7 @@
   var mode = CodeMirror.getMode({indentUnit: 2}, "javascript");
   function MT(name) { test.mode(name, mode, Array.prototype.slice.call(arguments, 1)); }
 
+
   MT("locals",
      "[keyword function] [variable foo]([def a], [def b]) { [keyword var] [def c] [operator =] [number 10]; [keyword return] [variable-2 a] [operator +] [variable-2 c] [operator +] [variable d]; }");
 
@@ -60,6 +61,12 @@
      "  [keyword for]([keyword var] [def i] [operator =] [number 0]; [variable-2 i] [operator <] [variable-2 n]; [operator ++][variable-2 i])",
      "    [keyword yield] [variable-2 i];",
      "}");
+
+  MT("quotedStringAddition",
+     "[keyword let] [variable f] [operator =] [variable a] [operator +] [string 'fatarrow'] [operator +] [variable c];");
+      
+  MT("quotedFatArrow",
+     "[keyword let] [variable f] [operator =] [variable a] [operator +] [string '=>'] [operator +] [variable c];");
 
   MT("fatArrow",
      "[variable array].[property filter]([def a] [operator =>] [variable-2 a] [operator +] [number 1]);",
